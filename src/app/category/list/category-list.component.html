@@ -1,0 +1,57 @@
+<!-- <div class="container">
+    <div class="d-flex justify-content-between mb-3">
+        <h4 class="">Categories</h4>
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-info  text-light" (click)="add()">Add Category</a>
+        </div>
+    </div> -->
+
+    <!-- <table class="table text-center dt-responsive">
+        <thead>
+            <tr>
+                <th hidden>
+                    Category Id
+                </th>
+                <th>
+                    Category Name
+                </th>
+                <th>
+                    Total Products
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categoryList">
+                <td hidden></td>
+                <td>{{category.categoryName}}</td>
+                <td>
+                    <div class="badge bg-info text-decoration-none  text-light p-2 px-3">{{category.totalProducts}}
+                    </div>
+                </td>
+                <td class="d-flex justify-content-around">
+                    <div class="d-flex  gap-2">
+                        <a class="btn btn-outline-success" (click)="view(category.categoryId)">View</a>
+                        <a class="btn btn-outline-info" (click)="edit(category.categoryId)">Edit</a>
+                        <a class="btn btn-outline-danger" (click)="delete(category.categoryId)">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table> -->
+
+<!-- </div> -->
+
+
+<!-- category-list.component.html -->
+
+<kendo-grid [kendoGridBinding]="categoryList" style="width: 50vw;"
+    [resizable]="true" [filterable]="true" [sortable]="true"  [pageSize]="8">
+    <kendo-grid-column field="categoryId" title="ID" class="categoryName"></kendo-grid-column>
+
+    <kendo-grid-column field="categoryName" title="Name" class="categoryName"></kendo-grid-column>
+    <kendo-grid-column field="totalProducts" title="Total Products" class="totalProducts"></kendo-grid-column>
+    <kendo-grid-column field="actions" title="Actions" class="actions"></kendo-grid-column>
+</kendo-grid>

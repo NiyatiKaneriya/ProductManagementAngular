@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h4>View Product</h4>
+        <a class="btn btn-outline-info" (click)="back()">Back</a>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-4">
+            <h5>Product Name</h5>
+        </div>
+        <div class="col-8">{{products.productName}}</div>
+        <div class="col-4">
+            <h5>Category</h5>
+        </div>
+        <div class="col-8">{{products.category}}</div>
+        <div class="col-4">
+            <h5>Price</h5>
+        </div>
+        <div class="col-8">{{products.price}}</div>
+        <div class="col-4">
+            <h5>Supplier Name</h5>
+        </div>
+        <div class="col-8">{{products.supplierName}}</div>
+        <div class="col-4">
+            <h5>Supplier Email</h5>
+        </div>
+        <div class="col-8">{{products.supplierEmail}}</div>
+        <div class="col-4">
+            <h5>Supplier PhoneNo.</h5>
+        </div>
+        <div class="col-8">{{products.supplierPhoneNo}}</div>
+        <div class="col-4">
+            <h5>Product Description</h5>
+        </div>
+        <div class="col-8">{{products.productDescription}}</div>
+        <div class="col-4">
+            <h5>Available From</h5>
+        </div>
+        <div class="col-8">{{products.availableFrom}}</div>
+        <div class="col-4">
+            <h5>Product Website</h5>
+        </div>
+        <div class="col-8">{{products.productWebsite}}</div>
+        <div class="col-4">
+            <h5>is Product Active?</h5>
+        </div>
+        <div class="col-8">{{products.isActive}}</div>
+        <div class="col-4">
+            <h5>Available At</h5>
+        </div>
+        <div class="col-8">{{products.availableAtcityList}}</div>
+        <div class="col-4">
+            <h5>Image</h5>
+        </div>
+        <div class="col-8"><img [src]="imageSrc" id="" height="100" width="100" /></div>
+    </div>
+</div>

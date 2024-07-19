@@ -1,0 +1,193 @@
+<div class="container">
+  <div class="d-flex justify-content-between mb-3">
+    <h4 class=" ">Product {{pageTitle}}</h4>
+    <a class="btn btn-outline-info" (click)="back()">Back</a>
+  </div>
+  <form class="row" id="Productform" [formGroup]="ProductForm" (ngSubmit)="onSubmit()">
+    <input type="number" hidden id="ProductId" formControlName="productId" />
+    <div class="form-floating col-md-6 mb-3">
+      <input maxlength="50" type="text" formControlName="productName"
+        [ngClass]="{ 'is-invalid': submitted && form['productName'].errors }" class="form-control" id="ProductName"
+        placeholder="Enter productname here...." />
+      <label for="floatingInput" style="padding-left: 25px">Product Name<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+      <div *ngIf="submitted && form['productName'].errors" class="invalid-feedback">
+        <div *ngIf="form['productName'].errors['required']">
+          {{commonMessage.RequiredFieldMessage.replace('{0}','Product Name')}}
+        </div>
+        <div *ngIf="form['productName'].errors['minlength']">
+          {{commonMessage.MinLength.replace('{0}','Product Name')}}
+        </div>
+        <div *ngIf="form['productName'].errors['maxlength']">
+          {{commonMessage.MaxLength.replace('{0}','Product Name')}}
+        </div>
+      </div>
+    </div>
+    <div class="form-floating col-md-6 mb-3">
+      <select id="CategoryId" formControlName="categoryId"
+        [ngClass]="{ 'is-invalid': submitted && form['categoryId'].errors }" class="form-control"
+        placeholder="Enter category here....">
+        <option *ngFor="let player of categories" [value]="player.categoryId">
+          {{player.categoryName}}
+        </option>
+      </select>
+      <label for="floatingInput" style="padding-left: 25px">Category<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+      <div *ngIf="submitted && form['categoryId'].errors" class="invalid-feedback">
+        <div *ngIf="form['categoryId'].errors['required']">{{commonMessage.RequiredFieldMessage.replace('{0}','Category')}}
+        </div>
+      </div>
+    </div>
+    <div class="form-floating col-md-6 mb-3">
+      <input type="text" class="form-control" formControlName="price"
+        [ngClass]="{ 'is-invalid': submitted && form['price'].errors }" id="Price" placeholder="Enter Price here...." />
+      <label for="floatingInput" style="padding-left: 25px">Price<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+      <div *ngIf="submitted && form['price'].errors" class="invalid-feedback">
+        <div *ngIf="form['price'].errors['required']">{{commonMessage.RequiredFieldMessage.replace('{0}','Price')}}</div>
+        <div *ngIf="form['price'].errors['pattern']">{{commonMessage.InDigits.replace('{0}','Price')}}</div>
+      </div>
+    </div>
+    <div class="form-floating col-md-6 mb-3">
+      <input maxlength="50" type="text" formControlName="supplierName"
+        [ngClass]="{ 'is-invalid': submitted && form['supplierName'].errors }" class="form-control" id="SupplierName"
+        placeholder="Enter Supplier Name here...." />
+      <label for="floatingInput" style="padding-left: 25px">Supplier Name<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+      <div *ngIf="submitted && form['supplierName'].errors" class="invalid-feedback">
+        <div *ngIf="form['supplierName'].errors['required']">
+          {{commonMessage.RequiredFieldMessage.replace('{0}','Supplier Name')}}
+        </div>
+        <div *ngIf="form['supplierName'].errors['minlength']">
+          {{commonMessage.MinLength.replace('{0}','Supplier Name')}}
+        </div>
+        <div *ngIf="form['supplierName'].errors['maxlength']">
+          {{commonMessage.MaxLength.replace('{0}','Supplier Name')}}
+
+        </div>
+      </div>
+    </div>
+    <div class="form-floating col-md-6 mb-3">
+      <input pattern=".*\S+.*" maxlength="100" formControlName="supplierEmail"
+        [ngClass]="{ 'is-invalid': submitted && form['supplierEmail'].errors }" type="text" class="form-control"
+        id="SupplierEmail" placeholder="Enter Supplier Email here...." />
+      <label for="floatingInput" style="padding-left: 25px">Supplier Email<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i>
+      </label>
+      <div *ngIf="submitted && form['supplierEmail'].errors" class="invalid-feedback">
+        <div *ngIf="form['supplierEmail'].errors['required']">
+          {{commonMessage.RequiredFieldMessage.replace('{0}','Supplier Email')}}
+        </div>
+        <div *ngIf="form['supplierEmail'].errors['email']">
+          {{commonMessage.EmailValidationMessage.replace('{0}','Supplier')}}
+
+        </div>
+      </div>
+    </div>
+    <div class="form-floating col-md-6 mb-3">
+      <input maxlength="10" placeholder="Supplier PhoneNo." formControlName="supplierPhoneNo"
+        [ngClass]="{ 'is-invalid': submitted && form['supplierPhoneNo'].errors }" class="form-control"
+        id="SupplierPhoneNo" />
+      <label for="floatingInput" style="padding-left: 25px">Supplier PhoneNo.<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+      <div *ngIf="submitted && form['supplierPhoneNo'].errors" class="invalid-feedback">
+        <div *ngIf="form['supplierPhoneNo'].errors['required']">
+          {{commonMessage.RequiredFieldMessage.replace('{0}','Supplier Phone No')}}
+        </div>
+        <div *ngIf="form['supplierPhoneNo'].errors['pattern']">
+          {{commonMessage.phoneNumberValidationMessage.replace('{0}','Supplier')}}
+        </div>
+      </div>
+    </div>
+    <div class="form-floating col-md-12 mb-3">
+      <textarea maxlength="256" formControlName="productDescription"
+        [ngClass]="{ 'is-invalid': submitted && form['productDescription'].errors }" class="form-control"
+        placeholder="Enter Description of product here" id="ProductDescription" style="height: 100px"></textarea>
+      <label for="floatingInput" style="padding-left: 25px">Description<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+      <div *ngIf="submitted && form['productDescription'].errors" class="invalid-feedback">
+        <div *ngIf="form['productDescription'].errors['required']">
+          {{commonMessage.RequiredFieldMessage.replace('{0}','Product Description')}}
+        </div>
+        <div *ngIf="form['productDescription'].errors['minlength']">
+          {{commonMessage.MinLength.replace('{0}','Product Description')}}
+        </div>
+        <div *ngIf="form['productDescription'].errors['maxlength']">
+          {{commonMessage.MaxLength.replace('{0}','Product Description')}}
+
+        </div>
+      </div>
+    </div>
+    <div class="form-floating col-md-6 mb-3">
+      <input type="date" formControlName="availableFrom"
+        [ngClass]="{ 'is-invalid': submitted && form['availableFrom'].errors }" class="form-control " id="availableFrom"
+        placeholder="" />
+      <label for="floatingInput" style="padding-left: 25px">Available From<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+      <div *ngIf="submitted && form['availableFrom'].errors" class="invalid-feedback">
+        <div *ngIf="form['availableFrom'].errors['required']">
+          {{commonMessage.RequiredFieldMessage.replace('{0}','Available Form')}}
+        </div>
+      </div>
+    </div>
+    <div class="form-floating col-md-6 mb-3">
+      <input type="text" class="form-control" formControlName="productWebsite"
+        [ngClass]="{ 'is-invalid': submitted && form['productWebsite'].errors }" id="ProductWebsite"
+        placeholder="Enter Product Website here...." />
+      <label for="floatingInput" style="padding-left: 25px">Product Website<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+      <div *ngIf="submitted && form['productWebsite'].errors" class="invalid-feedback">
+        <div *ngIf="form['productWebsite'].errors['required']">
+          {{commonMessage.RequiredFieldMessage.replace('{0}','Product Website')}}
+        </div>
+      </div>
+    </div>
+    <div class="form-floating d-flex gap-3 col-md-6 mb-3">
+      <p>
+        Is Active Product?
+        <i class="fa-solid fa-asterisk text-danger px-2 small"></i>
+      </p>
+      <div class="d-flex gap-2">
+        <div class="form-check">
+          <input class="form-check-input" formControlName="isActive"
+            [ngClass]="{ 'is-invalid': submitted && form['isActive'].errors }" [value]="true" type="radio"
+            id="flexRadioDefault1" checked />
+          <label class="form-check-label" for="flexRadioDefault1"> Yes </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" formControlName="isActive"
+            [ngClass]="{ 'is-invalid': submitted && form['isActive'].errors }" [value]="false" type="radio"
+            id="flexRadioDefault2" />
+          <label class="form-check-label" for="flexRadioDefault2"> No </label>
+          <div *ngIf="submitted && form['isActive'].errors" class="invalid-feedback">
+            <div *ngIf="form['isActive'].errors['required']">
+              {{commonMessage.RequiredFieldMessage.replace('{0}','IsActive')}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-floating d-flex flex-wrap gap-3 col-md-6 mb-3">
+      <div class="d-flex gap-2 flex-wrap" *ngFor="let item of cities">
+        <div class="form-check mx-2">
+          <input class="form-check-input" (change)="cityCheck()" type="checkbox" name="checkbox" [value]="item.cityId"
+            [checked]="item.checked" />
+          <label class="form-check-label" for="checkbox"> {{item.cityName}} </label>
+        </div>
+      </div>
+      <div *ngIf="submitted && !AvailableAt" class="small text-danger">
+        {{commonMessage.RequiredFieldMessage.replace('{0}','Atlease 1 city ')}}
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="formFile" class="form-label">Product image<i
+          class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+      <input formControlName="filePath" accept=".png" [ngClass]="{ 'is-invalid': submitted && form['filePath'].errors }"
+        (change)="onFileSelected($event)" class="form-control formFile" type="file" id="formFile" />
+    </div>
+    <div class="col-md-12 mb-3 d-flex justify-content-end gap-2">
+      <input type="submit" class="btn btn-info" />
+      <a (click)="onReset()" class="btn btn-outline-info">Reset</a>
+    </div>
+  </form>
+</div>

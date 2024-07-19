@@ -1,0 +1,48 @@
+<div class="container">
+    <h4 class="mb-3 ">Category {{pageTitle}}</h4>
+
+    <form class="row" id="categoryform" [formGroup]="CategoryForm" (ngSubmit)="onSubmit()">
+        <div class="my-3">Add category name and sequence for ordering it</div>
+        <div class="col-6">
+            <input class="form-control" hidden formControlName="categoryId" />
+
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="categoryName"
+                    [ngClass]="{ 'is-invalid': submitted && form['categoryName'].errors }" maxlength="50"
+                    class="form-control" id="categoryName" placeholder="Enter Category here....">
+                <label for="floatingInput">Category Name<i
+                        class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+                <div *ngIf="submitted && form['categoryName'].errors" class="invalid-feedback">
+                    <div *ngIf="form['categoryName'].errors['required']">
+                        {{commonMessage.RequiredFieldMessage.replace('{0}','Category Name')}}
+                    </div>
+                    <div *ngIf="form['categoryName'].errors['minlength']">
+                        {{commonMessage.MinLength.replace('{0}','Category Name')}}
+                    </div>
+                    <div *ngIf="form['categoryName'].errors['maxlength']">
+                        {{commonMessage.MaxLengthreplace('{0}','Category Name')}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="sequence"
+                    [ngClass]="{ 'is-invalid': submitted && form['sequence'].errors }" class="form-control"
+                    id="sequence" placeholder="Enter Sequence here....">
+                <label for="floatingInput">Sequence<i class="fa-solid fa-asterisk text-danger px-2 small"></i></label>
+                <div *ngIf="submitted && form['sequence'].errors" class="invalid-feedback">
+                    <div *ngIf="form['sequence'].errors['required']">
+                        {{commonMessage.RequiredFieldMessage.replace('{0}','Sequence')}}</div>
+                    <div *ngIf="form['sequence'].errors['pattern']">{{commonMessage.InDigits.replace('{0}','Sequence')}}
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex gap-3 justify-content-end">
+                <input type="submit" class="btn btn-info" />
+                <a class="btn btn-outline-info" (click)="cancel()">Cancel</a>
+            </div>
+
+        </div>
+    </form>
+
+
+</div>

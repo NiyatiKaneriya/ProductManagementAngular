@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h4>View Category</h4>
+        <a class="btn btn-outline-info" (click)="back()">Back</a>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-4">
+            <h5>Category Name</h5>
+        </div>
+        <div class="col-8">{{category.categoryName}}</div>
+        <div class="col-4">
+            <h5>Sequence</h5>
+        </div>
+        <div class="col-8">{{category.sequence}}</div>
+        <div class="col-4">
+            <h5>Total Products</h5>
+        </div>
+        <div class="col-8">{{category.totalProducts}}</div>
+        <div class="col-4">
+            <h5>Products</h5>
+        </div>
+        <div class="col-8">
+            <table class="table table-bordered ">
+                <thead class="table-secondary">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Supplier Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of category.catProducts">
+                        <td>{{product.productName}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.supplierName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
